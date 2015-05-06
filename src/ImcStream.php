@@ -161,8 +161,10 @@ class ImcStream
      */
     protected function local_open($uri, $mode)
     {
-        $fp = @fopen($uri, $mode);
-        if (!$fp) {
+        if( !empty($uri) )
+            $fp = @fopen($uri, $mode);
+    
+        if (empty($fp)) {
             error_reporting(error_reporting() & ~E_WARNING);
             throw new IOException(
                 'file.not.found.or.access.denied.%cp_filename%',
