@@ -345,8 +345,10 @@ class ImcStream
             return true;
         }
 
-        @fclose($this->sfp);
-        @fclose($this->fp);
+        if ($this->sfp != null)
+            @fclose($this->sfp);
+        if ($this->fp != null)
+            @fclose($this->fp);
 
         return true;
     }
